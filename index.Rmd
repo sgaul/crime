@@ -49,13 +49,14 @@ ggplot(data = subset(totalcrime, Town %in% c("Bridgeport","Hartford","New Haven"
        aes(x = Year, y = Total.crime.Rate)) + 
   geom_line(aes(group = Town)) +
   labs(x = NULL, y = "Crime rate by town (per 100K residents)") +
+  scale_x_continuous(breaks = c(1998,2004,2010)) + 
   theme_minimal() + 
   facet_wrap(~ Town)
 ```
 
 For the rest of the region, crime rates have been stable and relatively low. 
 
-```{r echo = FALSE, warning = FALSE, message = FALSE}
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 12}
 totalcrime <- subset(totalcrime, totalcrime$Town %in% levels(towns$Town))
 totalcrime$Town <- factor(totalcrime$Town)
 ggplot(data = totalcrime, aes(x = Year, y = Total.crime.Rate)) + 
@@ -63,12 +64,12 @@ ggplot(data = totalcrime, aes(x = Year, y = Total.crime.Rate)) +
   labs(x = NULL, y = "Crime rate by town (per 100K residents)") +
   scale_x_continuous(breaks = c(1998,2004,2010)) + 
   theme_minimal() + 
-  facet_wrap(~ Town)
+  facet_wrap(~ Town, ncol = 4)
 ```
 
 Looking at average crime rates for the past five years, Manchester, East Windsor and East Hartford have had the highest rates outside of Hartford. 
 
-```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 4}
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 5}
 totalcrime_avg <- ddply(subset(totalcrime, Year > 2005), .(Town), summarise, 
                     Total.crime.Rate = weighted.mean(Total.crime.Rate, Total.estimated.population..Number, na.rm = TRUE))
 totalcrime_avg$Town <- reorder(totalcrime_avg$Town, totalcrime_avg$Total.crime.Rate)
