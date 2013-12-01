@@ -82,12 +82,12 @@ Property crime rates for the region over the past five years have a similar patt
 ![plot of chunk unnamed-chunk-8](assets/fig/unnamed-chunk-8.png) 
 
 
-Juvenile (10 - 17 year olds) arrest rates for Hartford are close to the highest in the state. 
+Juvenile (10 - 17 year olds) arrest rates for Hartford are close to the highest in the state for urban areas. 
 
 ![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9.png) 
 
 
-For the region, Manchester reports the highest juvenile arrest rates though, at a rate that puts it the highest in the state. 
+For the region, however, Manchester reports the highest juvenile arrest rates, at a rate that puts it the highest in the state. 
 
 ![plot of chunk unnamed-chunk-10](assets/fig/unnamed-chunk-10.png) 
 

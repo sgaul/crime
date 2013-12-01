@@ -42,7 +42,7 @@ Indicators for crime rates are used in a few reports.
 
 Using data for Connecticut from the UCR, we can make basic comparisons for the main urban areas in Connecticut. (2005 data is missing for some reason.) Looking at all crimes, rates in Hartford and the other CT cities since the late '90s. 
 
-```{r echo = FALSE, warning = FALSE, message = FALSE}
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 5}
 totalcrime <- read.csv("totalcrime.csv")
 library(ggplot2)
 ggplot(data = subset(totalcrime, Town %in% c("Bridgeport","Hartford","New Haven","New London","Stamford","Waterbury")), 
@@ -61,13 +61,14 @@ totalcrime$Town <- factor(totalcrime$Town)
 ggplot(data = totalcrime, aes(x = Year, y = Total.crime.Rate)) + 
   geom_line(aes(group = Town)) +
   labs(x = NULL, y = "Crime rate by town (per 100K residents)") +
+  scale_x_continuous(breaks = c(1998,2004,2010)) + 
   theme_minimal() + 
   facet_wrap(~ Town)
 ```
 
 Looking at average crime rates for the past five years, Manchester, East Windsor and East Hartford have had the highest rates outside of Hartford. 
 
-```{r echo = FALSE, warning = FALSE, message = FALSE}
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 4}
 totalcrime_avg <- ddply(subset(totalcrime, Year > 2005), .(Town), summarise, 
                     Total.crime.Rate = weighted.mean(Total.crime.Rate, Total.estimated.population..Number, na.rm = TRUE))
 totalcrime_avg$Town <- reorder(totalcrime_avg$Town, totalcrime_avg$Total.crime.Rate)
@@ -79,7 +80,7 @@ ggplot(data = totalcrime_avg, aes(x = Total.crime.Rate, y = Town)) +
 
 Aggregating results for the entire region shows again a gradual decline in crime rates over the past decade plus. 
 
-```{r echo = FALSE, warning = FALSE, message = FALSE}
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 3}
 totalcrime_avg <- ddply(totalcrime, .(Year), summarise, 
                     Total.crime.Rate = weighted.mean(Total.crime.Rate, Total.estimated.population..Number))
 ggplot(data = totalcrime_avg, aes(x = Year, y = Total.crime.Rate)) + 
@@ -147,9 +148,9 @@ ggplot(data = subset(propertycrime_avg, Town %in% levels(towns$Town)),
   theme_minimal()
 ```
 
-Juvenile (10 - 17 year olds) arrest rates for Hartford are close to the highest in the state. 
+Juvenile (10 - 17 year olds) arrest rates for Hartford are close to the highest in the state for urban areas. 
 
-```{r echo = FALSE, warning = FALSE, message = FALSE}
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 3}
 juvenilecrime_avg <- read.csv("juvenilecrime.csv")
 juvenilecrime_avg <- ddply(subset(juvenilecrime_avg, Year > 2005), .(Town),summarise, Juvenile.arrests.Rate = 
                             weighted.mean(Juvenile.arrests.Rate, 
@@ -164,7 +165,7 @@ ggplot(data = subset(juvenilecrime_avg, Town %in% c("Bridgeport","Hartford","New
   theme_minimal()
 ```
 
-For the region, Manchester reports the highest juvenile arrest rates though, at a rate that puts it the highest in the state. 
+For the region, however, Manchester reports the highest juvenile arrest rates, at a rate that puts it the highest in the state. 
 
 ```{r echo = FALSE, warning = FALSE, message = FALSE}
 ggplot(data = subset(juvenilecrime_avg, Town %in% levels(towns$Town)), 
@@ -176,7 +177,7 @@ ggplot(data = subset(juvenilecrime_avg, Town %in% levels(towns$Town)),
 
 Juvenile arrest rates in Manchester appear to have been declining, although they are not reported for all years and only through 2010. 
 
-```{r echo = FALSE, warning = FALSE, message = FALSE}
+```{r echo = FALSE, warning = FALSE, message = FALSE, fig.height = 3}
 juvenilecrime_avg <- read.csv("juvenilecrime.csv")
 ggplot(data = subset(juvenilecrime_avg, Town == "Manchester"), 
        aes(y = Juvenile.arrests.Rate, x = Year)) + 
