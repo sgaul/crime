@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Crime rates</title>
+    <link rel="stylesheet" href="libraries/frameworks/minimal/stylesheets/styles.css">
+    <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+        <link rel=stylesheet href="libraries/widgets/nvd3/css/nv.d3.css"></link>
+<link rel=stylesheet href="libraries/widgets/nvd3/css/rNVD3.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+    <script src="libraries/widgets/nvd3/js/jquery-1.8.2.min.js"></script>
+<script src="libraries/widgets/nvd3/js/d3.v3.min.js"></script>
+<script src="libraries/widgets/nvd3/js/nv.d3.min-new.js"></script>
+<script src="libraries/widgets/nvd3/js/fisheye.js"></script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+<header>
+  <h1>Crime rates</h1>
+  <p>Hartford regional data and indicators</p>
+    <ol>
+    </ol>
+</header>
+
+      <section>
+        <h2>Crime rates</h2>
+<h2>Data and limitations</h2>
+
+<p>Data on crime rates are available from several sources. The stats here are drawn from the <a href="http://ctdata.org/catalog">CTData site</a> which draws data from the <a href="http://ctdatahaven.org/know/index.php/Juvenile%20arrests,%20Total%20arrests,%2010%20to%2017%20years,%20Rate%20%28per%20100,000%29">Connecticut Department of Public Safety</a>. </p>
+
+<p>There are two main national databases for crime data - the <a href="http://www.dpsdata.ct.gov/dps/ucr/ucr.aspx">Uniform Crime Reports</a> (UCR) and the <a href="http://www2.fbi.gov/ucr/faqs.htm">National Incident-Based Reporting System</a> (NIBRS). The databases <a href="http://blog.spotcrime.com/2012/03/difference-between-ucr-and-nibrs.html">differ by a few factors</a>, including the degree of detail provided for the crime stats and whether multiple crimes are reported for a single incident or only the most severe offense.  </p>
+
+<p>In addition, comparisons of crime stats should be treated with caution when the comparisons are not for similar geographic units. DataHaven has <a href="http://www.ctdatahaven.org/blog/2011/06/public_safety_new_haven/">written an op-ed</a> based on misleading use of crime statistics for New Haven in national comparisons.</p>
+
+<h2>What do we already know?</h2>
+
+<p>Indicators for crime rates are used in a few reports. </p>
+
+<h3>Local</h3>
+
+<ul>
+<li><a href="http://www.ctfairhousing.org/people-place-and-opportunity-report/">CT Fair Housing Center Opportunity Mapping</a> (developed with the Kirwan Institute at Ohio State) included the crime index or crime rate from Census data.</li>
+<li><a href="http://courantblogs.com/cityline/wp-content/uploads/2013/04/Hartford-Neighborhood-Assessment.pdf">Hartford Neighborhood Assessments</a> included Crime per capita data from the Hartford Police Department. </li>
+<li><a href="http://www.cadh.org/health-equity/health-equity-index.html">Health Equity Index</a> included crimes against persons and crimes against property (per 1000 local residents).</li>
+<li><a href="http://pvpc.org/resources/datastats/state-of-people/stateofthepeople2013.pdf">Pioneer Valley State of the People</a> included the crime rate as an indicator.</li>
+<li><a href="http://www.ct.gov/opm/cwp/view.asp?a=2998&amp;Q=490946">Population Results Working Group</a> includes the Per Capita Crime Rate (disaggregated by juveniles, violent and property), as well as arrests for domestic violence, both using data from the CT Judicial Branch.</li>
+</ul>
+
+<h2>Other</h2>
+
+<ul>
+<li><a href="http://www.bostonindicators.org/">Boston Indicators Project</a> includes rates of Part 1 crime, property crime and violent crime, from the Boston Police Department. They also track hate crimes, using Boston PD data. </li>
+<li><a href="http://fcd-us.org/our-work/child-well-being-index-cwi">The Child Well-Being Index</a> includes rates of violent crime offenders and violent crime victimization, both from the US Department of Justice. </li>
+<li><a href="http://www.futurefundneo.org/whatmatters">What Matters to Metros</a> includes rates of property crime and violent crime, both from the Uniform Crime Reports. </li>
+</ul>
+
+<h2>Sample results</h2>
+
+<p>Using data for Connecticut from the UCR, we can make basic comparisons for the main urban areas in Connecticut. (2005 data is missing for some reason.) Looking at all crimes, rates in Hartford and the other CT cities since the late &#39;90s. </p>
+
+<p><img src="assets/fig/unnamed-chunk-1.png" alt="plot of chunk unnamed-chunk-1"> </p>
+
+<p>For the rest of the region, crime rates have been stable and relatively low. </p>
+
+<p><img src="assets/fig/unnamed-chunk-2.png" alt="plot of chunk unnamed-chunk-2"> </p>
+
+<p>Looking at average crime rates for the past five years, Manchester, East Windsor and East Hartford have had the highest rates outside of Hartford. </p>
+
+<p><img src="assets/fig/unnamed-chunk-3.png" alt="plot of chunk unnamed-chunk-3"> </p>
+
+<p>Aggregating results for the entire region shows again a gradual decline in crime rates over the past decade plus. </p>
+
+<p><img src="assets/fig/unnamed-chunk-4.png" alt="plot of chunk unnamed-chunk-4"> </p>
+
+<p>Crime data is also available for violent crime, property crime and juvenile arrests. </p>
+
+<p>Violent crime rates in Hartford have been lower than New Haven for the past five years, and higher than the other urban areas in Connecticut.</p>
+
+<p><img src="assets/fig/unnamed-chunk-5.png" alt="plot of chunk unnamed-chunk-5"> </p>
+
+<p>Rates in other towns in the region are generally below 250 per 100,000 residents.  </p>
+
+<p><img src="assets/fig/unnamed-chunk-6.png" alt="plot of chunk unnamed-chunk-6"> </p>
+
+<p>Property crime rates for Hartford are also second highest in the state, behind New Haven. </p>
+
+<p><img src="assets/fig/unnamed-chunk-7.png" alt="plot of chunk unnamed-chunk-7"> </p>
+
+<p>Property crime rates for the region over the past five years have a similar pattern to other crime rates. </p>
+
+<p><img src="assets/fig/unnamed-chunk-8.png" alt="plot of chunk unnamed-chunk-8"> </p>
+
+<p>Juvenile (10 - 17 year olds) arrest rates for Hartford are close to the highest in the state. </p>
+
+<p><img src="assets/fig/unnamed-chunk-9.png" alt="plot of chunk unnamed-chunk-9"> </p>
+
+<p>For the region, Manchester reports the highest juvenile arrest rates though, at a rate that puts it the highest in the state. </p>
+
+<p><img src="assets/fig/unnamed-chunk-10.png" alt="plot of chunk unnamed-chunk-10"> </p>
+
+<p>Juvenile arrest rates in Manchester appear to have been declining, although they are not reported for all years and only through 2010. </p>
+
+<p><img src="assets/fig/unnamed-chunk-11.png" alt="plot of chunk unnamed-chunk-11"> </p>
+
+<p>Manchester has since been commended for reducing juvenile arrests in schools after 2010 through the <a href="http://www.cga.ct.gov/kid/rba/Docs/2013/CTKids%20Annual%20Update%20Presentation%201-15-13.pdf">CT Kids Report Card group</a> (see slides 28 - 29).</p>
+
+      </section>
+      <footer>
+        <p>Maintained by <a href="http://github.com/">
+          Scott Gaul
+        </a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by 
+          <a href="https://github.com/orderedlist">orderedlist</a></small>
+        </p>
+      </footer>    </div>
+    <script src="libraries/frameworks/minimal/javascripts/scale.fix.js"></script>
+  </body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
